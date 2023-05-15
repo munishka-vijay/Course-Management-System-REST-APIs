@@ -71,17 +71,19 @@ router.put("/:courseId", async (req, res) => {
 
 //delete course
 router.delete("/:courseId", async (req, res) => {
-    try{
-        await Course.remove({ _id: req.params.courseId });
+    try {
+        await Course.deleteOne({ _id: req.params.courseId });
         res.status(200).json({
             message:"Course deleted",
-        })
-        
-    }catch (error) {
+        });
+    } catch (error) {
         res.json(error);
-
     }
 });
+
+
+
+
 
 
 module.exports = router;
